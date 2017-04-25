@@ -23,7 +23,7 @@ public class ProductsController extends Controller {
         ProductRepository repository = new ProductRepository();
         Product[] products = repository.getAllProducts();
         for (int i = 0; i < products.length; i++){
-            products[i].toString();
+            System.out.println(products[i].toString());
         }
     }
 }

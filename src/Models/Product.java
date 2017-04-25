@@ -14,12 +14,14 @@ public class Product {
     private String name;
     private double price;
     private short onHand;
-
-    public Product(String name, double price, short onHand){
+    private ProductCategory category;
+    
+    public Product(String name, double price, short onHand, ProductCategory category){
         this.id = java.util.UUID.randomUUID().toString();
         this.name = name;
         this.price = price;
         this.onHand = onHand;
+        this.category = category;
     }
     
     public String getId(){
@@ -38,17 +40,16 @@ public class Product {
         return onHand;
     }
     
+    public ProductCategory getCategory(){
+        return category;
+    }
+    
     @Override
     public String toString(){
         // Todo: make this real string.
-        String firstLine = this.name;
-        String secondLine = "$" + Double.toString(this.price);
-        String thirdLine = this.onHand < 20 ? "***Low Stock***" : "";
         String seperator = "-----------------------";
-        System.out.println(firstLine);
-        System.out.println(secondLine);
-        System.out.println(thirdLine);
-        System.out.println(seperator);
-        return "";
+        return this.name + "\t" + ("$" + Double.toString(this.price)) + "\t"
+                + this.category.name() + "\t" + (this.onHand < 20 ? "***Low Stock***" : "")
+                + "\n" + seperator;
     }
 }
