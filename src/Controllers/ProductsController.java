@@ -5,13 +5,25 @@
  */
 package Controllers;
 
+import DataStore.ProductDataStore;
+import Models.Product;
+import Repository.ProductRepository;
+
 /**
  *
  * @author DERRICK
  */
 public class ProductsController extends Controller {
     public ProductsController(boolean isPrimeMember){
-        String msg = isPrimeMember ? "Prime Member" : "Non-Prime Member";
+        String msg = isPrimeMember ? "Welcome Prime Member" : "Welcome. Sign up for Prime?";
         System.out.println(msg);
+    }
+    
+    public void render(){
+        ProductRepository repository = new ProductRepository();
+        Product[] products = repository.getAllProducts();
+        for (int i = 0; i < products.length; i++){
+            products[i].toString();
+        }
     }
 }

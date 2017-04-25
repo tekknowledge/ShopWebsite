@@ -23,6 +23,7 @@ public class ShopWebsite {
         Customer customer = controller.Run();
         ICommand<Controller> cmd = new GetHomeCommand(customer);
         Controller productsController = cmd.execute();
+        ((ProductsController)productsController).render();
     }
     
 }
