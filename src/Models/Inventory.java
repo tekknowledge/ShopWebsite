@@ -69,7 +69,7 @@ public class Inventory {
     }
     
     public Iterator getAllItemsIterator() {
-        return new 
+        return new InventoryIterator();
     }
     public Iterator getElectronicsIterator(){
         return new CategoryIterator(ProductCategory.ELECTRONICS);

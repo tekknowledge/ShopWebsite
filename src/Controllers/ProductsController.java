@@ -8,6 +8,9 @@ package Controllers;
 import DataStore.ProductDataStore;
 import Models.Product;
 import Repository.ProductRepository;
+import Repository.InventoryRepository;
+import Models.Inventory;
+import Utility.Iterator;
 
 /**
  *
@@ -21,10 +24,11 @@ public class ProductsController extends Controller {
     
     public void render(){
         System.out.println("Choose a product to add to your cart.");
-        ProductRepository repository = new ProductRepository();
-        Product[] products = repository.getAllProducts();
-        for (int i = 0; i < products.length; i++){
-            System.out.println(products[i].toString());
+        InventoryRepository repository = new InventoryRepository();
+        Inventory inventory = repository.get();
+        Iterator itr = inventory.getAllItemsIterator();
+        while (itr.hasNext()){
+            System.out.println(((Product)itr.next()).toString());
         }
     }
 }
