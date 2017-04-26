@@ -20,6 +20,7 @@ public class ProductsController extends Controller {
     }
     
     public void render(){
+        System.out.println("Choose a product to add to your cart.");
         ProductRepository repository = new ProductRepository();
         Product[] products = repository.getAllProducts();
         for (int i = 0; i < products.length; i++){
