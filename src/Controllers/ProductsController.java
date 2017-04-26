@@ -11,6 +11,7 @@ import Repository.ProductRepository;
 import Repository.InventoryRepository;
 import Models.Inventory;
 import Utility.Iterator;
+import java.util.Scanner;
 
 /**
  *
@@ -23,6 +24,10 @@ public class ProductsController extends Controller {
     }
     
     public void render(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Select a category of products to display");
+        System.out.println("1 - All Products \t 2 - Electronics \t 3 - Apparrel \t 4 - Sporting Goods \t 5 - Books");
+        String choice = scanner.nextLine();
         System.out.println("Choose a product to add to your cart.");
         InventoryRepository repository = new InventoryRepository();
         Inventory inventory = repository.get();
