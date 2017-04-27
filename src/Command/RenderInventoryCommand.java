@@ -5,12 +5,16 @@
  */
 package Command;
 import Models.Inventory;
-import Strategy.IProductRenderingStrategy;
+import Strategy.ProductRenderingStrategy;
 import Utility.Iterator;
 import java.util.Dictionary;
 import java.util.Hashtable;
 import Strategy.*;
 import Utility.NullObject;
+import Models.Product;
+import Views.ChooseAProduct;
+import Models.InventorySelectionViewModel;
+
 
 /**
  *
@@ -20,12 +24,12 @@ public class RenderInventoryCommand implements ICommand {
 
     private String choice;
     private Inventory inventory;
-    private Dictionary<String, IProductRenderingStrategy> delegates;
+    private Dictionary<String, ProductRenderingStrategy> delegates;
     
     public RenderInventoryCommand(String choice, Inventory inventory){
         this.choice = choice;
         this.inventory = inventory;
-        this.delegates = new Hashtable<String, IProductRenderingStrategy>();
+        this.delegates = new Hashtable<String, ProductRenderingStrategy>();
         delegates.put("1", new RenderAllInventoryStrategy(this.inventory));
         delegates.put("2", new RenderElectronicsStrategy(this.inventory));
         delegates.put("3", new RenderApparelStrategy(this.inventory));
@@ -35,10 +39,12 @@ public class RenderInventoryCommand implements ICommand {
     
     @Override
     public Object execute() {
-        IProductRenderingStrategy renderProducts = null;
+        IStrategy renderProducts = null;
         try {
             renderProducts = delegates.get(choice);
-            renderProducts.Implement();
+            // Why do I have to cast this??
+            InventorySelectionViewModel model = (InventorySelectionViewModel)renderProducts.Implement();
+            return new ChooseAProduct(model);
         } catch (Exception ex){
             System.out.println("No inventory items exist for this selection!");
         }

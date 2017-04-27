@@ -5,26 +5,38 @@
  */
 package Strategy;
 import Models.Inventory;
+import Models.InventorySelectionViewModel;
 import Models.Product;
 import Utility.Iterator;
+import javax.swing.JOptionPane;
+import java.util.ArrayList;
+
 
 /**
  *
  * @author DERRICK
  */
-public class RenderAllInventoryStrategy implements IProductRenderingStrategy {
+public class RenderAllInventoryStrategy extends ProductRenderingStrategy {
 
     private Inventory inventory;
     
     public RenderAllInventoryStrategy(Inventory inventory){
         this.inventory = inventory;
     }
+    
     @Override
-    public void Implement() {
+    public InventorySelectionViewModel Implement() {
+        super.Implement();
         Iterator itr = inventory.getAllItemsIterator();
+        return super.makeProductArray(itr);
+        /*ArrayList<String> items = new ArrayList<String>();
         while (itr.hasNext()){
-            System.out.println(((Product)itr.next()).toString());
+            items.add(((Product)itr.next()).toString()); //System.out.println(((Product)itr.next()).toString());
         }
+        JOptionPane.showInputDialog(null, "Choose an item to purchase", 
+                "Inventory", JOptionPane.INFORMATION_MESSAGE, null,
+                items.toArray(), items.get(0)
+                );*/
     }
     
 }

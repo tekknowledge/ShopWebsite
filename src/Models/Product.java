@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Models;
+import Utility.StringUtility;
 
 /**
  *
@@ -15,6 +16,7 @@ public class Product {
     private double price;
     private short onHand;
     private ProductCategory category;
+    private static final int STRING_FORMAT_FIXED_LENGTH = 40;
     
     public Product(String name, double price, short onHand, ProductCategory category){
         this.id = java.util.UUID.randomUUID().toString();
@@ -46,10 +48,12 @@ public class Product {
     
     @Override
     public String toString(){
-        // Todo: make this real string.
         String seperator = "-----------------------";
-        return this.name + "\t" + ("$" + Double.toString(this.price)) + "\t"
-                + this.category.name() + "\t" + (this.onHand < 20 ? "***Low Stock***" : "")
-                + "\n" + seperator;
+        return StringUtility.AddPadding(this.id, STRING_FORMAT_FIXED_LENGTH) + 
+               StringUtility.AddPadding(this.name, STRING_FORMAT_FIXED_LENGTH) + 
+               StringUtility.AddPadding("$" + Double.toString(this.price), STRING_FORMAT_FIXED_LENGTH) +
+               StringUtility.AddPadding(this.category.name(), STRING_FORMAT_FIXED_LENGTH) + 
+               StringUtility.AddPadding((this.onHand < 20 ? "***Low Stock***" : ""), STRING_FORMAT_FIXED_LENGTH) +
+               "\n" + seperator;
     }
 }

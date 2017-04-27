@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Strategy;
+package Views;
 
 /**
  *
  * @author DERRICK
  */
-public interface IProductRenderingStrategy extends IStrategy {
-    @Override
-    public void Implement();
+public interface IView {
+    public Object Present();
 }

@@ -9,6 +9,6 @@ package Strategy;
  *
  * @author DERRICK
  */
-public interface IStrategy {
-    void Implement();
+public interface IStrategy<T> {
+    T Implement();
 }

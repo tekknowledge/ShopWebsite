@@ -11,8 +11,10 @@ import Repository.ProductRepository;
 import Repository.InventoryRepository;
 import Models.Inventory;
 import Utility.Iterator;
+import Models.ProductChoice;
 import java.util.Scanner;
 import Command.*;
+import Views.*;
 
 /**
  *
@@ -32,14 +34,10 @@ public class ProductsController extends Controller {
         InventoryRepository repository = new InventoryRepository();
         Inventory inventory = repository.get();
         ICommand renderInventory = new RenderInventoryCommand(scanner.nextLine(), inventory);
-        renderInventory.execute();
-        
-        System.out.println("Choose a product to add to your cart.");
-        /*
-        Iterator itr = inventory.getAllItemsIterator();
-        while (itr.hasNext()){
-            System.out.println(((Product)itr.next()).toString());
-        }
-                */
+        IView view = (IView)renderInventory.execute();
+        ProductChoice choice = (ProductChoice)view.Present();
+        System.out.println(choice.getProduct().toString());
+        System.out.println(choice.getQuantity());
+    
     }
 }

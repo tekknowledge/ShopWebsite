@@ -6,6 +6,7 @@
 package Strategy;
 
 import Models.Inventory;
+import Models.InventorySelectionViewModel;
 import Models.Product;
 import Utility.Iterator;
 
@@ -13,7 +14,7 @@ import Utility.Iterator;
  *
  * @author DERRICK
  */
-public class RenderBooksStrategy implements IProductRenderingStrategy {
+public class RenderBooksStrategy extends ProductRenderingStrategy {
 
     private Inventory inventory;
     
@@ -21,11 +22,9 @@ public class RenderBooksStrategy implements IProductRenderingStrategy {
         this.inventory = inventory;
     }
     @Override
-    public void Implement() {
+    public InventorySelectionViewModel Implement(){
         Iterator itr = inventory.getBooksIterator();
-        while (itr.hasNext()){
-            System.out.println(((Product)itr.next()).toString());
-        }
+        return super.makeProductArray(itr);
     }
     
 }
