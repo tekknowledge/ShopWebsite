@@ -20,11 +20,11 @@ public class CommandInvoker {
         commands.add(command);
     }
     
-    public Object Invoke(){
+    public Object[] Invoke(){
+        ArrayList<Object> objects = new ArrayList<Object>();
         for (ICommand cmd : commands){
-            cmd.execute();
+            objects.add(cmd.execute());
         }
-        
-        return null;
+        return objects.toArray();
     }
 }
