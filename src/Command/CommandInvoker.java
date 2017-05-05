@@ -5,26 +5,37 @@
  */
 package Command;
 import java.util.ArrayList;
+import Strategy.CommandInvokerDataStrategy;
+
 /**
  *
  * @author DERRICK
  */
-public class CommandInvoker {
+public class CommandInvoker<T> {
     private ArrayList<ICommand> commands;
+    private CommandInvokerDataStrategy<T> strategy = null;
+    
+    public CommandInvoker(CommandInvokerDataStrategy<T> dataReturnStrategy){
+        commands = new ArrayList<ICommand>();
+        strategy = dataReturnStrategy;
+    }
     
     public CommandInvoker(){
         commands = new ArrayList<ICommand>();
     }
-    
     public void AddCommand(ICommand command){
         commands.add(command);
     }
     
-    public Object[] Invoke(){
+    public void Invoke(){
         ArrayList<Object> objects = new ArrayList<Object>();
         for (ICommand cmd : commands){
-            objects.add(cmd.execute());
+            if (strategy != null)
+                strategy.addData(cmd.execute());
         }
-        return objects.toArray();
+    }
+    
+    public T GetDataFromExecutedCommands(){
+        return strategy.Implement();
     }
 }

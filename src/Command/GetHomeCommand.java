@@ -19,6 +19,8 @@ public class GetHomeCommand implements ICommand<Controller> {
     public GetHomeCommand(Customer customer){
         this.customer = customer;
     }
+    
+    // Returns the correct controller (and eventually view) based on whether user is a prime member or not
     public Controller execute(){
         if (customer.getIsPrimeMember()){
             // Eventually return Products controller w/ shipping or some sort of incentive applied

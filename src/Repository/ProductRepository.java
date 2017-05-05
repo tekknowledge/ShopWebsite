@@ -16,4 +16,17 @@ public class ProductRepository {
     public Product[] getAllProducts(){
         return ProductDataStore.getProducts();
     }
+    
+    public void UpdateInventoryCount(Product product, int qty){
+        product.setOnHand((short)qty);
+    }
+    
+    public Product getProduct(String productId){
+        for (Product p : getAllProducts()){
+            if (p.getId().equals(productId)){
+                return p;
+            }
+        }
+        return null;
+    }
 }

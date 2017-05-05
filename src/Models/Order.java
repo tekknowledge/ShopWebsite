@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Command;
+package Models;
 
 /**
  *
  * @author DERRICK
- * @param <T>
  */
-public interface ICommand<T> {
-    public T execute();
+public class Order {
+    
 }

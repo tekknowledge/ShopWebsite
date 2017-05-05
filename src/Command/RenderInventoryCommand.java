@@ -6,12 +6,10 @@
 package Command;
 import Models.Inventory;
 import Strategy.ProductRenderingStrategy;
-import Utility.Iterator;
 import java.util.Dictionary;
 import java.util.Hashtable;
 import Strategy.*;
 import Utility.NullObject;
-import Models.Product;
 import Views.ChooseAProduct;
 import Models.InventorySelectionViewModel;
 

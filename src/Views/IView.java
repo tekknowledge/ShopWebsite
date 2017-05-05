@@ -9,6 +9,8 @@ package Views;
  *
  * @author DERRICK
  */
-public interface IView {
-    public Object Present();
+public interface IView<TViewData> {
+    public void Present();
+    
+    public TViewData GetData();
 }

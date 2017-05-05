@@ -3,13 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Command;
+package Strategy;
 
 /**
  *
  * @author DERRICK
- * @param <T>
  */
-public interface ICommand<T> {
-    public T execute();
+public abstract class CommandInvokerDataStrategy<T> implements IStrategy<T> {
+    @Override
+    public abstract T Implement();
+    public abstract void addData(Object o);
 }

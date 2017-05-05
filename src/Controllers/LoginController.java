@@ -8,7 +8,12 @@ import java.util.Scanner;
 import Repository.CustomerRepository;
 import Models.Customer;
 import Utility.*;
-
+import Command.CommandInvoker;
+import Models.LoginCredentials;
+import Command.CommandInputResponse;
+import Models.LoginCredentials;
+import Strategy.GatherLoginCredentialStrategy;
+import Views.*;
 /**
  *
  * @author DERRICK
@@ -19,15 +24,22 @@ public class LoginController {
         Customer customer = null;
         
         while (customer == null) {
-            Scanner input = new Scanner(System.in);
-            System.out.println("Enter Your Username:");
-            String username = input.nextLine();
-            System.out.println("Enter your password:");
-            String pwd = input.nextLine();
+            IView login = new Login();
+            login.Present();
+            LoginCredentials credentials = (LoginCredentials)login.GetData();
+            
+            /*
+            CommandInvoker invoker = new CommandInvoker<LoginCredentials>(new GatherLoginCredentialStrategy());
+            invoker.AddCommand(new CommandInputResponse("Enter Your Username:"));
+            invoker.AddCommand(new CommandInputResponse("Enter Your Password:"));
+            invoker.Invoke();
+            LoginCredentials credentials = (LoginCredentials)invoker.GetDataFromExecutedCommands();
+            */
+            
             CustomerRepository repo = new CustomerRepository();
 
             try {
-                customer = repo.Login(username, pwd);
+                customer = repo.Login(credentials.Username, credentials.Password);
             } catch (CustomerNotFoundException ex){
                 System.out.println("Invalid credentials. Try again.");
                 customer = null;

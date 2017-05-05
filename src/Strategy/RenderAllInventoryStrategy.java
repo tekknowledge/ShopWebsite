@@ -6,10 +6,7 @@
 package Strategy;
 import Models.Inventory;
 import Models.InventorySelectionViewModel;
-import Models.Product;
 import Utility.Iterator;
-import javax.swing.JOptionPane;
-import java.util.ArrayList;
 
 
 /**

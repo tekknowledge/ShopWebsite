@@ -46,6 +46,9 @@ public class Product {
         return category;
     }
     
+    public void setOnHand(short adjustment){
+        this.onHand = (short)(this.onHand + adjustment);
+    }
     @Override
     public String toString(){
         String seperator = "-----------------------";

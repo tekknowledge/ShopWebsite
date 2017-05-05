@@ -5,12 +5,9 @@
  */
 package Controllers;
 
-import DataStore.ProductDataStore;
-import Models.Product;
 import Repository.ProductRepository;
 import Repository.InventoryRepository;
 import Models.Inventory;
-import Utility.Iterator;
 import Models.ProductChoice;
 import java.util.Scanner;
 import Command.*;
@@ -35,9 +32,17 @@ public class ProductsController extends Controller {
         Inventory inventory = repository.get();
         ICommand renderInventory = new RenderInventoryCommand(scanner.nextLine(), inventory);
         IView view = (IView)renderInventory.execute();
-        ProductChoice choice = (ProductChoice)view.Present();
+        view.Present();
+        ProductChoice choice = (ProductChoice)view.GetData();
         System.out.println(choice.getProduct().toString());
         System.out.println(choice.getQuantity());
+        ProductRepository productRepo = new ProductRepository();
+        //System.out.println("old count = ");
+        //System.out.println(productRepo.getProduct(choice.getProduct().getId()).getOnHand());
+        productRepo.UpdateInventoryCount(choice.getProduct(), (choice.getQuantity() * -1));
+        //System.out.println("new count = ");
+        //System.out.println(productRepo.getProduct(choice.getProduct().getId()).getOnHand());
+        
     
     }
 }

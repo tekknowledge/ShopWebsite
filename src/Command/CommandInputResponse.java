@@ -21,7 +21,7 @@ public class CommandInputResponse implements ICommand<String> {
     }
     
     public String execute(){
-        System.out.println("Enter your username");
+        System.out.println(prompt);
         return scanner.nextLine();
     }
 }

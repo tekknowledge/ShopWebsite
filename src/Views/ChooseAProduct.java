@@ -14,19 +14,25 @@ import Models.InventorySelectionViewModel;
  *
  * @author DERRICK
  */
-public class ChooseAProduct implements IView {
+public class ChooseAProduct implements IView<ProductChoice> {
     private InventorySelectionViewModel model;
+    private ProductChoice productChoice;
     
     public ChooseAProduct(InventorySelectionViewModel model){
         this.model = model;
     }
     @Override
-    public Object Present(){
+    public void Present(){
         Object product = JOptionPane.showInputDialog(null, model.getPrompt(), 
                 model.getPageTitle(), JOptionPane.INFORMATION_MESSAGE, null,
                 model.getProducts(), model.getProducts()[0]
                 );    
         String qty = JOptionPane.showInputDialog(null, "Quantity?");
-        return new ProductChoice((Product)product, StringUtility.ConvertToInt(qty));
+        productChoice = new ProductChoice((Product)product, StringUtility.ConvertToInt(qty));
+    }
+    
+    @Override
+    public ProductChoice GetData(){
+        return productChoice;
     }
 }

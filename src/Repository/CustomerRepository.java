@@ -17,7 +17,7 @@ public class CustomerRepository {
         Customer[] allCustomers = CustomerDataStore.getCustomers();
         for (int i = 0; i < allCustomers.length; i++){
             Customer c = allCustomers[i];
-            if (c.getUserName().equals(userName))
+            if (c.getUserName().equals(userName) && c.getPassword().equals(password))
                 return c;
         }       
         throw new CustomerNotFoundException();

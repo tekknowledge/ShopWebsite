@@ -64,6 +64,10 @@ public class Customer {
         return lastName;
     }
     
+    public String getPassword(){
+        return password;
+    }
+    
     public boolean getIsPrimeMember(){
         return isPrimeMember;
     }

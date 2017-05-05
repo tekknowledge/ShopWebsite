@@ -7,7 +7,6 @@ package Strategy;
 
 import Models.Inventory;
 import Models.InventorySelectionViewModel;
-import Models.Product;
 import Utility.Iterator;
 
 /**
