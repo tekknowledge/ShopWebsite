@@ -47,7 +47,7 @@ public class Product {
     }
     
     public void setOnHand(short adjustment){
-        this.onHand = (short)(this.onHand + adjustment);
+        this.onHand = (short)(this.onHand - adjustment);
     }
     @Override
     public String toString(){

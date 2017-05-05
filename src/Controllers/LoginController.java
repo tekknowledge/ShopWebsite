@@ -18,8 +18,8 @@ import Views.*;
  *
  * @author DERRICK
  */
-public class LoginController {
-    public Customer Run() {
+public class LoginController extends Controller {
+    public Customer Render() {
         
         Customer customer = null;
         

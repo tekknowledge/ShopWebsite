@@ -28,7 +28,7 @@ public class ChooseAProduct implements IView<ProductChoice> {
                 model.getProducts(), model.getProducts()[0]
                 );    
         String qty = JOptionPane.showInputDialog(null, "Quantity?");
-        productChoice = new ProductChoice((Product)product, StringUtility.ConvertToInt(qty));
+        productChoice = new ProductChoice((Product)product, (short)StringUtility.ConvertToInt(qty));
     }
     
     @Override

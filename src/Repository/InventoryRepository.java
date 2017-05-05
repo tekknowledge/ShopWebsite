@@ -6,6 +6,7 @@
 package Repository;
 import Models.Inventory;
 import Models.Product;
+import Models.ProductChoice;
 import java.util.*;
 /**
  *
@@ -16,5 +17,14 @@ public class InventoryRepository {
         ProductRepository productRepository = new ProductRepository();
         Product[] products = productRepository.getAllProducts();
         return new Inventory(new ArrayList<Product>(Arrays.asList(products)));
+    }
+    
+    public boolean TryAcquire(ProductChoice choice){
+        ProductRepository productRepository = new ProductRepository();
+        Product product = productRepository.getProduct(choice.getProduct().getId());
+        if (product.getOnHand() < choice.getQuantity())
+            return false;
+        product.setOnHand(choice.getQuantity());
+        return true;
     }
 }

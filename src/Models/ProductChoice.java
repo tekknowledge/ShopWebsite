@@ -4,16 +4,16 @@
  * and open the template in the editor.
  */
 package Models;
-
+import Utility.Iterator;
 /**
  *
  * @author DERRICK
  */
 public class ProductChoice {
     private Product product;
-    private int quantity;
+    private short quantity;
     
-    public ProductChoice(Product product, int quantity){
+    public ProductChoice(Product product, short quantity){
         this.product = product; this.quantity = quantity;
     }
     
@@ -21,7 +21,8 @@ public class ProductChoice {
         return product;
     }
     
-    public int getQuantity(){
+    public short getQuantity(){
         return quantity;
     }
+   
 }

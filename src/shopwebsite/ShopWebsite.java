@@ -18,12 +18,19 @@ public class ShopWebsite {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        // Ask user to log in
         LoginController controller = new LoginController();
-        Customer customer = controller.Run();
+        Customer customer = controller.Render();
+        
+        // Display product list
         ICommand<Controller> cmd = new GetHomeCommand(customer);
         Controller productsController = cmd.execute();
         ((ProductsController)productsController).render();
+        
+        // Display cart
+        CartController cartController = new CartController();
+        cartController.render();
+        
     }
     
 }

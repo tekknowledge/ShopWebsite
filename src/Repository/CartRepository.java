@@ -3,14 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Utility;
+package Repository;
+
+import DataStore.CartDataStore;
+import Models.Cart;
 
 /**
  *
  * @author DERRICK
  */
-public interface Iterator<T> {
-    public boolean hasNext();
+public class CartRepository  {
+    public CartRepository(){}
     
-    public T next();    
+    public Cart get(){
+        return CartDataStore.getCart();
+    }
 }

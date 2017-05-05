@@ -12,6 +12,8 @@ import Models.ProductChoice;
 import java.util.Scanner;
 import Command.*;
 import Views.*;
+import Repository.CartRepository;
+import Models.Cart;
 
 /**
  *
@@ -28,20 +30,38 @@ public class ProductsController extends Controller {
         System.out.println("Select a category of products to display");
         System.out.println("1 - All Products \t 2 - Electronics \t 3 - Apparrel \t 4 - Sporting Goods \t 5 - Books");
         
+        // Get the user's cart.
+        CartRepository cartRepository = new CartRepository();
+        Cart cart = cartRepository.get();
+        
+        // Get and display a list of inventory for the user to choose
         InventoryRepository repository = new InventoryRepository();
         Inventory inventory = repository.get();
         ICommand renderInventory = new RenderInventoryCommand(scanner.nextLine(), inventory);
+        
         IView view = (IView)renderInventory.execute();
         view.Present();
+        
+        // Return the data from a user's choice
         ProductChoice choice = (ProductChoice)view.GetData();
+        
+        // Try to add the product to the cart
+        boolean isValid = repository.TryAcquire(choice);
+        if (isValid){
+            cart.addProduct(choice);
+        }
+        
         System.out.println(choice.getProduct().toString());
         System.out.println(choice.getQuantity());
+        
         ProductRepository productRepo = new ProductRepository();
-        //System.out.println("old count = ");
-        //System.out.println(productRepo.getProduct(choice.getProduct().getId()).getOnHand());
-        productRepo.UpdateInventoryCount(choice.getProduct(), (choice.getQuantity() * -1));
-        //System.out.println("new count = ");
-        //System.out.println(productRepo.getProduct(choice.getProduct().getId()).getOnHand());
+        //productRepo.UpdateInventoryCount(choice.getProduct(), (choice.getQuantity() * -1));
+        
+        System.out.println("old count = ");
+        System.out.println(productRepo.getProduct(choice.getProduct().getId()).getOnHand());
+        
+        System.out.println("new count = ");
+        System.out.println(productRepo.getProduct(choice.getProduct().getId()).getOnHand());
         
     
     }

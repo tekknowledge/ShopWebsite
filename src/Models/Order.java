@@ -10,5 +10,14 @@ package Models;
  * @author DERRICK
  */
 public class Order {
+    private String customerid;
+    private String id;
+    private Product[] products;
+    
+    public Order(){}
+    
+    public String getCustomerId(){
+        return "";
+    }
     
 }
