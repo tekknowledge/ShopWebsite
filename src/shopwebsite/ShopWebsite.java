@@ -25,11 +25,12 @@ public class ShopWebsite {
         // Display product list
         ICommand<Controller> cmd = new GetHomeCommand(customer);
         Controller productsController = cmd.execute();
-        ((ProductsController)productsController).render();
+        ((ProductsController)productsController).Render();
         
         // Display cart
         CartController cartController = new CartController();
-        cartController.render();
+        cartController.Render();
+        
         
     }
     

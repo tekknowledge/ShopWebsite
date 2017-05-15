@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Models;
+import Models.Cart;
 
 /**
  *
@@ -13,8 +14,11 @@ public class Order {
     private String customerid;
     private String id;
     private Product[] products;
+    private Cart cart;
     
-    public Order(){}
+    public Order(Cart cart){
+      
+    }
     
     public String getCustomerId(){
         return "";

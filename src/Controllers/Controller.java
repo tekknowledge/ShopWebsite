@@ -9,6 +9,6 @@ package Controllers;
  *
  * @author DERRICK
  */
-public class Controller {
-    
+public abstract class Controller<T> {
+    public abstract T Render();
 }

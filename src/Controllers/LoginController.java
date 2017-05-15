@@ -18,7 +18,8 @@ import Views.*;
  *
  * @author DERRICK
  */
-public class LoginController extends Controller {
+public class LoginController extends Controller<Customer> {
+ @Override
     public Customer Render() {
         
         Customer customer = null;
@@ -26,16 +27,7 @@ public class LoginController extends Controller {
         while (customer == null) {
             IView login = new Login();
             login.Present();
-            LoginCredentials credentials = (LoginCredentials)login.GetData();
-            
-            /*
-            CommandInvoker invoker = new CommandInvoker<LoginCredentials>(new GatherLoginCredentialStrategy());
-            invoker.AddCommand(new CommandInputResponse("Enter Your Username:"));
-            invoker.AddCommand(new CommandInputResponse("Enter Your Password:"));
-            invoker.Invoke();
-            LoginCredentials credentials = (LoginCredentials)invoker.GetDataFromExecutedCommands();
-            */
-            
+            LoginCredentials credentials = (LoginCredentials)login.GetData();   
             CustomerRepository repo = new CustomerRepository();
 
             try {

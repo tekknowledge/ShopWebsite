@@ -29,13 +29,15 @@ public class ShowCart implements IView<Cart> {
         }
         if ( JOptionPane.showConfirmDialog(null, "buy \n" + message) == JOptionPane.YES_OPTION){
             System.out.println("hello");
+        } else {
+            System.out.println("Need to implement emptying cart");
         }
         
     }
 
     @Override
     public Cart GetData() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return cart;
     }
     
 }

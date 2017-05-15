@@ -14,18 +14,21 @@ import Command.*;
 import Views.*;
 import Repository.CartRepository;
 import Models.Cart;
+import Utility.NullObject;
 
 /**
  *
  * @author DERRICK
  */
-public class ProductsController extends Controller {
+public class ProductsController extends Controller<NullObject> {
+
     public ProductsController(boolean isPrimeMember){
         String msg = isPrimeMember ? "Welcome Prime Member" : "Welcome. Sign up for Prime?";
         System.out.println(msg);
     }
     
-    public void render(){
+	@Override
+    public NullObject Render(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Select a category of products to display");
         System.out.println("1 - All Products \t 2 - Electronics \t 3 - Apparrel \t 4 - Sporting Goods \t 5 - Books");
@@ -62,7 +65,7 @@ public class ProductsController extends Controller {
         
         System.out.println("new count = ");
         System.out.println(productRepo.getProduct(choice.getProduct().getId()).getOnHand());
-        
+        return new NullObject();
     
     }
 }
