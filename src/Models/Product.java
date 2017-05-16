@@ -57,6 +57,8 @@ public class Product {
                StringUtility.AddPadding("$" + Double.toString(this.price), STRING_FORMAT_FIXED_LENGTH) +
                StringUtility.AddPadding(this.category.name(), STRING_FORMAT_FIXED_LENGTH) + 
                StringUtility.AddPadding((this.onHand < 20 ? "***Low Stock***" : ""), STRING_FORMAT_FIXED_LENGTH) +
-               "\n" + seperator;
+               StringUtility.NEW_LINE + seperator;
     }
+    
+      
 }

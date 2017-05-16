@@ -5,6 +5,7 @@
  */
 package Models;
 import Utility.Iterator;
+import Utility.StringUtility;
 /**
  *
  * @author DERRICK
@@ -23,6 +24,13 @@ public class ProductChoice {
     
     public short getQuantity(){
         return quantity;
+    }
+    
+    @Override
+    public String toString(){
+        return StringUtility.AddPadding(this.getProduct().getName(), StringUtility.STRING_FORMAT_FIXED_LENGTH) + 
+               StringUtility.AddPadding("$" + Double.toString(this.getProduct().getPrice()), StringUtility.STRING_FORMAT_FIXED_LENGTH)
+          + StringUtility.AddPadding("x " + Integer.toString(this.getQuantity()), StringUtility.STRING_FORMAT_FIXED_LENGTH);
     }
    
 }

@@ -16,7 +16,8 @@ public class Cart {
     private String id;
     private ArrayList<ProductChoice> products;
     
-    public Cart(){
+    public Cart(String customerId){
+        this.customerId = customerId;
         products = new ArrayList<ProductChoice>();
     }
     

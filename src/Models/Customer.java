@@ -11,18 +11,22 @@ package Models;
  */
 public class Customer {
     
-    public Customer(String firstName, String lastName, String userName, String password, boolean isPrimeMember){
+    public Customer(String firstName, String lastName, String userName, String password, boolean isPrimeMember, String state){
         this.id = java.util.UUID.randomUUID().toString();
         this.firstName = firstName;
         this.lastName = lastName;
         this.isPrimeMember = isPrimeMember;
         this.userName = userName;
         this.password = password;
+        this.state = state;
     }
+    
     private String firstName;
     private String lastName;
     private String userName;
     private String password;
+    private String state;
+    private String sessionId;
     
     //private Address address;
     private boolean isPrimeMember;
@@ -36,9 +40,9 @@ public class Customer {
         this.lastName = lastName;
     }
     
-    /*public void setAddress(){
-        
-    }*/
+    public void setState(String state){
+        this.state = state;
+    }
     
     public void setIsPrimeMember(boolean isPrimeMember){
         this.isPrimeMember = isPrimeMember;
@@ -68,6 +72,9 @@ public class Customer {
         return password;
     }
     
+    public String getState(){
+      return state;
+    }
     public boolean getIsPrimeMember(){
         return isPrimeMember;
     }

@@ -15,19 +15,22 @@ import Views.*;
 import Repository.CartRepository;
 import Models.Cart;
 import Utility.NullObject;
+import Models.Customer;
 
 /**
  *
  * @author DERRICK
  */
 public class ProductsController extends Controller<NullObject> {
-
-    public ProductsController(boolean isPrimeMember){
-        String msg = isPrimeMember ? "Welcome Prime Member" : "Welcome. Sign up for Prime?";
+    private Customer customer;
+    
+    public ProductsController(Customer customer){
+        this.customer = customer;
+        String msg = customer.getIsPrimeMember() ? "Welcome Prime Member" : "Welcome. Sign up for Prime?";
         System.out.println(msg);
     }
     
-	@Override
+    @Override
     public NullObject Render(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Select a category of products to display");
@@ -35,7 +38,7 @@ public class ProductsController extends Controller<NullObject> {
         
         // Get the user's cart.
         CartRepository cartRepository = new CartRepository();
-        Cart cart = cartRepository.get();
+        Cart cart = cartRepository.get(customer.getId());
         
         // Get and display a list of inventory for the user to choose
         InventoryRepository repository = new InventoryRepository();

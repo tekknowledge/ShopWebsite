@@ -15,7 +15,7 @@ import Models.Cart;
 public class CartRepository  {
     public CartRepository(){}
     
-    public Cart get(){
-        return CartDataStore.getCart();
+    public Cart get(String customerId){
+        return CartDataStore.getCart(customerId);
     }
 }

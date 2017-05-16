@@ -28,10 +28,16 @@ public class ShopWebsite {
         ((ProductsController)productsController).Render();
         
         // Display cart
-        CartController cartController = new CartController();
-        cartController.Render();
+        CartController cartController = new CartController(customer.getId());
+        Cart cart = cartController.Render();
         
+        // Display order
+        OrderController orderController = new OrderController(customer, cart);
+        Order order = orderController.Render();
         
+        // Display receipt
+        ReceiptController receiptController = new ReceiptController();
+        receiptController.Render();
     }
     
 }

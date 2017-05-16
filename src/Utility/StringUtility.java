@@ -10,6 +10,10 @@ package Utility;
  * @author DERRICK
  */
 public class StringUtility {
+  
+    public static final int STRING_FORMAT_FIXED_LENGTH = 40;
+    public static final String NEW_LINE = "\n";
+    
     public static String AddPadding(String str, int length){
         return String.format("%1$"+ length + "s", str);
     }

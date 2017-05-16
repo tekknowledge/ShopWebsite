@@ -13,8 +13,8 @@ import Models.Cart;
  */
 public class CartDataStore {
     private static Cart cart = null;
-    public static Cart getCart(){
-        cart = cart == null ? new Cart(): cart;
+    public static Cart getCart(String customerId){
+        cart = cart == null ? new Cart(customerId): cart;
         return cart;
     }
 }
