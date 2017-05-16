@@ -23,7 +23,7 @@ public abstract class ProductRenderingStrategy implements IStrategy<InventorySel
     protected InventorySelectionViewModel makeProductArray(Iterator itr){
         ArrayList<Product> items = new ArrayList<Product>();
         while (itr.hasNext()){
-            items.add(((Product)itr.next())); //System.out.println(((Product)itr.next()).toString());
+            items.add(((Product)itr.next()));
         }      
         return new InventorySelectionViewModel(items.toArray(new Product[items.size()]), "Inventory", "Choose a product");
     }

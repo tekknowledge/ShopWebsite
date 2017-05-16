@@ -27,13 +27,7 @@ public class ShowCart implements IView<Cart> {
         String message = "";
         while (products.hasNext()){
             message += products.next().getProduct().toString() + StringUtility.NEW_LINE;
-        }
-        if ( JOptionPane.showConfirmDialog(null, "buy StringUtility.NEW_LINE" + message) == JOptionPane.YES_OPTION){
-            System.out.println("hello");
-        } else {
-            System.out.println("Need to implement emptying cart");
-        }
-        
+        }        
     }
 
     @Override

@@ -16,10 +16,9 @@ public class ShowOrder implements IView<Order> {
   
   @Override
   public void Present() {
-    //null, message, title, JOptionPane.YES_NO_OPTION
     if ( JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(null, order.print(), "Confirm Order", JOptionPane.YES_NO_OPTION) ){
-      
-    }
+      System.out.println("Thank you, your credit card on file has been processed.");
+    } 
   }
   
   @Override

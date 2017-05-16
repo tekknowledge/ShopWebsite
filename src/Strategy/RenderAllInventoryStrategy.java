@@ -26,14 +26,7 @@ public class RenderAllInventoryStrategy extends ProductRenderingStrategy {
         super.Implement();
         Iterator itr = inventory.getAllItemsIterator();
         return super.makeProductArray(itr);
-        /*ArrayList<String> items = new ArrayList<String>();
-        while (itr.hasNext()){
-            items.add(((Product)itr.next()).toString()); //System.out.println(((Product)itr.next()).toString());
-        }
-        JOptionPane.showInputDialog(null, "Choose an item to purchase", 
-                "Inventory", JOptionPane.INFORMATION_MESSAGE, null,
-                items.toArray(), items.get(0)
-                );*/
+
     }
     
 }

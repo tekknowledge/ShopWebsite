@@ -29,19 +29,9 @@ public class CustomerRepository {
     
     public Customer GetById(String id) throws CustomerNotFoundException {
         Customer[] allCustomers = CustomerDataStore.getCustomers();
-        System.out.println("debug");
-        System.out.println(allCustomers.length);
         for (int i = 0; i < allCustomers.length; i++){
             Customer c = allCustomers[i];
-            if (i == 1) {
-            System.out.println(c.getId());
-            System.out.println(id);
-            System.out.println(c.getId().length());
-            System.out.println(id.length());
-            System.out.println(c.getId().equals(id));
-            }
             if (c.getId().trim().equals(id.trim())){
-              System.out.println("found him");
                 return c;
                 
             }

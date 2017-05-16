@@ -57,17 +57,8 @@ public class ProductsController extends Controller<NullObject> {
             cart.addProduct(choice);
         }
         
-        System.out.println(choice.getProduct().toString());
-        System.out.println(choice.getQuantity());
         
         ProductRepository productRepo = new ProductRepository();
-        //productRepo.UpdateInventoryCount(choice.getProduct(), (choice.getQuantity() * -1));
-        
-        System.out.println("old count = ");
-        System.out.println(productRepo.getProduct(choice.getProduct().getId()).getOnHand());
-        
-        System.out.println("new count = ");
-        System.out.println(productRepo.getProduct(choice.getProduct().getId()).getOnHand());
         return new NullObject();
     
     }
