@@ -35,9 +35,7 @@ public class ShopWebsite {
         OrderController orderController = new OrderController(customer, cart);
         Order order = orderController.Render();
         
-        // Display receipt
-        ReceiptController receiptController = new ReceiptController();
-        receiptController.Render();
+
     }
     
 }

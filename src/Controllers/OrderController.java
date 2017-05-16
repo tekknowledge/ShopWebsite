@@ -5,6 +5,9 @@ import Models.Cart;
 import Views.IView;
 import Views.ShowOrder;
 import Utility.NullObject;
+import Models.IOrder;
+import Models.JoinPrimePostDecorator;
+import Models.SeasonalSpecialsPreDecorator;
 
 public class OrderController extends Controller<Order> {
   Customer customer;
@@ -16,15 +19,17 @@ public class OrderController extends Controller<Order> {
   }
   
   public Order Render() {
-    Order order = null;
+    Order bOrder = null;
     try {
-      order = new Order(cart);
+      bOrder = new Order(cart);
     } catch (Exception ex) {
       return (Order)null;
     }
       
-      IView<Order> view = new ShowOrder(customer, order);
-      view.Present();
-      return order;
+    IOrder order = new JoinPrimePostDecorator(new SeasonalSpecialsPreDecorator(bOrder), customer.getIsPrimeMember());
+    
+    IView<Order> view = new ShowOrder(customer, order);
+    view.Present();
+    return bOrder;
   }
 }

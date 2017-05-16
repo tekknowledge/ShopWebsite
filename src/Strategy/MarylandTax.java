@@ -6,8 +6,7 @@ public class MarylandTax extends TaxComputationStrategy {
   private double percentage = .06;
   private double subTotal;
   
-  public MarylandTax(double subTotal){
-    this.subTotal = subTotal;
+  public MarylandTax(){
   }
   
   @Override
