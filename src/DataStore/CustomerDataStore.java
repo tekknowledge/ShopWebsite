@@ -12,8 +12,8 @@ import Models.Customer;
  */
 public class CustomerDataStore {
     private static Customer[] customers = new Customer[]{
-        new Customer ("Derrick", "Witherspoon", "dwitherspoon", "p@ssword", true ),
-        new Customer ("Someone", "Else", "selse", "p@ssword", true )
+        new Customer ("Derrick", "Witherspoon", "dwitherspoon", "p@ssword", true, "Maryland" ),
+        new Customer ("Someone", "Else", "selse", "p@ssword", false, "Deleware" )
     };
     
     public static Customer[] getCustomers(){

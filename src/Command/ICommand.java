@@ -8,6 +8,7 @@ package Command;
 /**
  *
  * @author DERRICK
+ * @param <T>
  */
 public interface ICommand<T> {
     public T execute();
